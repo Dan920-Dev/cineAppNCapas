@@ -1,0 +1,60 @@
+﻿@model IEnumerable<cineAppNCapas.Models.PERSONA>
+
+@{
+    ViewBag.Title = "Personas";
+}
+
+<h2>Personas</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<!--- tablas de contenido donde see uestran los datos--->
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.edad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th>
+            rol
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.edad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ROL.nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idPersona }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idPersona }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idPersona })
+            </td>
+        </tr>
+    }
+
+</table>

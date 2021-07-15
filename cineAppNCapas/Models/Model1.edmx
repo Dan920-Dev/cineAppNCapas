@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="dbCineNCapasaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACCESOPREMIER">
+          <Key>
+            <PropertyRef Name="idPremier" />
+          </Key>
+          <Property Name="idPremier" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombrePelicula" Type="varchar" MaxLength="200" />
+          <Property Name="idPersona" Type="int" />
+        </EntityType>
+        <EntityType Name="PELICULA">
+          <Key>
+            <PropertyRef Name="nombre" />
+          </Key>
+          <Property Name="nombre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="duracion" Type="time" Precision="7" Nullable="false" />
+          <Property Name="clasificacion" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="estudio" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="director" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="genero" Type="varchar" MaxLength="75" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PERSONA">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idRol" Type="int" />
+          <Property Name="nombre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="edad" Type="int" />
+          <Property Name="telefono" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="idrol" />
+          </Key>
+          <Property Name="idrol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="estado" Type="bit" />
+        </EntityType>
+        <Association Name="FK__ACCESOPRE__idPer__2E1BDC42">
+          <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="0..1" />
+          <End Role="ACCESOPREMIER" Type="Self.ACCESOPREMIER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONA">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="ACCESOPREMIER">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ACCESOPRE__nombr__2D27B809">
+          <End Role="PELICULA" Type="Self.PELICULA" Multiplicity="0..1" />
+          <End Role="ACCESOPREMIER" Type="Self.ACCESOPREMIER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PELICULA">
+              <PropertyRef Name="nombre" />
+            </Principal>
+            <Dependent Role="ACCESOPREMIER">
+              <PropertyRef Name="nombrePelicula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PERSONA__idRol__2C3393D0">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="0..1" />
+          <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="idrol" />
+            </Principal>
+            <Dependent Role="PERSONA">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbCineNCapasaModelStoreContainer">
+          <EntitySet Name="ACCESOPREMIER" EntityType="Self.ACCESOPREMIER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PELICULA" EntityType="Self.PELICULA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PERSONA" EntityType="Self.PERSONA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ACCESOPRE__idPer__2E1BDC42" Association="Self.FK__ACCESOPRE__idPer__2E1BDC42">
+            <End Role="PERSONA" EntitySet="PERSONA" />
+            <End Role="ACCESOPREMIER" EntitySet="ACCESOPREMIER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ACCESOPRE__nombr__2D27B809" Association="Self.FK__ACCESOPRE__nombr__2D27B809">
+            <End Role="PELICULA" EntitySet="PELICULA" />
+            <End Role="ACCESOPREMIER" EntitySet="ACCESOPREMIER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PERSONA__idRol__2C3393D0" Association="Self.FK__PERSONA__idRol__2C3393D0">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="PERSONA" EntitySet="PERSONA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbCineNCapasaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACCESOPREMIER">
+          <Key>
+            <PropertyRef Name="idPremier" />
+          </Key>
+          <Property Name="idPremier" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombrePelicula" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="idPersona" Type="Int32" />
+          <NavigationProperty Name="PERSONA" Relationship="Self.FK__ACCESOPRE__idPer__2E1BDC42" FromRole="ACCESOPREMIER" ToRole="PERSONA" />
+          <NavigationProperty Name="PELICULA" Relationship="Self.FK__ACCESOPRE__nombr__2D27B809" FromRole="ACCESOPREMIER" ToRole="PELICULA" />
+        </EntityType>
+        <EntityType Name="PELICULA">
+          <Key>
+            <PropertyRef Name="nombre" />
+          </Key>
+          <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="duracion" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="clasificacion" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estudio" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="director" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="genero" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ACCESOPREMIER" Relationship="Self.FK__ACCESOPRE__nombr__2D27B809" FromRole="PELICULA" ToRole="ACCESOPREMIER" />
+        </EntityType>
+        <EntityType Name="PERSONA">
+          <Key>
+            <PropertyRef Name="idPersona" />
+          </Key>
+          <Property Name="idPersona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idRol" Type="Int32" />
+          <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellido" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="edad" Type="Int32" />
+          <Property Name="telefono" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ACCESOPREMIER" Relationship="Self.FK__ACCESOPRE__idPer__2E1BDC42" FromRole="PERSONA" ToRole="ACCESOPREMIER" />
+          <NavigationProperty Name="ROL" Relationship="Self.FK__PERSONA__idRol__2C3393D0" FromRole="PERSONA" ToRole="ROL" />
+        </EntityType>
+        <EntityType Name="ROL">
+          <Key>
+            <PropertyRef Name="idrol" />
+          </Key>
+          <Property Name="idrol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="estado" Type="Boolean" />
+          <NavigationProperty Name="PERSONA" Relationship="Self.FK__PERSONA__idRol__2C3393D0" FromRole="ROL" ToRole="PERSONA" />
+        </EntityType>
+        <Association Name="FK__ACCESOPRE__idPer__2E1BDC42">
+          <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="0..1" />
+          <End Role="ACCESOPREMIER" Type="Self.ACCESOPREMIER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PERSONA">
+              <PropertyRef Name="idPersona" />
+            </Principal>
+            <Dependent Role="ACCESOPREMIER">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ACCESOPRE__nombr__2D27B809">
+          <End Role="PELICULA" Type="Self.PELICULA" Multiplicity="0..1" />
+          <End Role="ACCESOPREMIER" Type="Self.ACCESOPREMIER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PELICULA">
+              <PropertyRef Name="nombre" />
+            </Principal>
+            <Dependent Role="ACCESOPREMIER">
+              <PropertyRef Name="nombrePelicula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PERSONA__idRol__2C3393D0">
+          <End Role="ROL" Type="Self.ROL" Multiplicity="0..1" />
+          <End Role="PERSONA" Type="Self.PERSONA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ROL">
+              <PropertyRef Name="idrol" />
+            </Principal>
+            <Dependent Role="PERSONA">
+              <PropertyRef Name="idRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbCineNCapasaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACCESOPREMIER" EntityType="Self.ACCESOPREMIER" />
+          <EntitySet Name="PELICULA" EntityType="Self.PELICULA" />
+          <EntitySet Name="PERSONA" EntityType="Self.PERSONA" />
+          <EntitySet Name="ROL" EntityType="Self.ROL" />
+          <AssociationSet Name="FK__ACCESOPRE__idPer__2E1BDC42" Association="Self.FK__ACCESOPRE__idPer__2E1BDC42">
+            <End Role="PERSONA" EntitySet="PERSONA" />
+            <End Role="ACCESOPREMIER" EntitySet="ACCESOPREMIER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ACCESOPRE__nombr__2D27B809" Association="Self.FK__ACCESOPRE__nombr__2D27B809">
+            <End Role="PELICULA" EntitySet="PELICULA" />
+            <End Role="ACCESOPREMIER" EntitySet="ACCESOPREMIER" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PERSONA__idRol__2C3393D0" Association="Self.FK__PERSONA__idRol__2C3393D0">
+            <End Role="ROL" EntitySet="ROL" />
+            <End Role="PERSONA" EntitySet="PERSONA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbCineNCapasaModelStoreContainer" CdmEntityContainer="dbCineNCapasaEntities">
+          <EntitySetMapping Name="ACCESOPREMIER">
+            <EntityTypeMapping TypeName="dbCineNCapasaModel.ACCESOPREMIER">
+              <MappingFragment StoreEntitySet="ACCESOPREMIER">
+                <ScalarProperty Name="idPremier" ColumnName="idPremier" />
+                <ScalarProperty Name="nombrePelicula" ColumnName="nombrePelicula" />
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PELICULA">
+            <EntityTypeMapping TypeName="dbCineNCapasaModel.PELICULA">
+              <MappingFragment StoreEntitySet="PELICULA">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="duracion" ColumnName="duracion" />
+                <ScalarProperty Name="clasificacion" ColumnName="clasificacion" />
+                <ScalarProperty Name="estudio" ColumnName="estudio" />
+                <ScalarProperty Name="director" ColumnName="director" />
+                <ScalarProperty Name="genero" ColumnName="genero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PERSONA">
+            <EntityTypeMapping TypeName="dbCineNCapasaModel.PERSONA">
+              <MappingFragment StoreEntitySet="PERSONA">
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+                <ScalarProperty Name="idRol" ColumnName="idRol" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="edad" ColumnName="edad" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ROL">
+            <EntityTypeMapping TypeName="dbCineNCapasaModel.ROL">
+              <MappingFragment StoreEntitySet="ROL">
+                <ScalarProperty Name="idrol" ColumnName="idrol" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

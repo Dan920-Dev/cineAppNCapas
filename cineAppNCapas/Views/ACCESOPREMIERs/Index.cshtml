@@ -1,0 +1,42 @@
+﻿@model IEnumerable<cineAppNCapas.Models.ACCESOPREMIER>
+
+@{
+    ViewBag.Title = "Acceso Premier";
+}
+
+<h2>Acceso Premier</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<!--- tablas de contenido donde see uestran los datos--->
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PERSONA.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PELICULA.clasificacion)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PERSONA.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PELICULA.clasificacion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idPremier }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idPremier }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idPremier })
+            </td>
+        </tr>
+    }
+
+</table>

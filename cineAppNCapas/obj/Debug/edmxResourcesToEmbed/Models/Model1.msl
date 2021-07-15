@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbCineNCapasaModelStoreContainer" CdmEntityContainer="dbCineNCapasaEntities">
+    <EntitySetMapping Name="ACCESOPREMIER">
+      <EntityTypeMapping TypeName="dbCineNCapasaModel.ACCESOPREMIER">
+        <MappingFragment StoreEntitySet="ACCESOPREMIER">
+          <ScalarProperty Name="idPremier" ColumnName="idPremier" />
+          <ScalarProperty Name="nombrePelicula" ColumnName="nombrePelicula" />
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PELICULA">
+      <EntityTypeMapping TypeName="dbCineNCapasaModel.PELICULA">
+        <MappingFragment StoreEntitySet="PELICULA">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="duracion" ColumnName="duracion" />
+          <ScalarProperty Name="clasificacion" ColumnName="clasificacion" />
+          <ScalarProperty Name="estudio" ColumnName="estudio" />
+          <ScalarProperty Name="director" ColumnName="director" />
+          <ScalarProperty Name="genero" ColumnName="genero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERSONA">
+      <EntityTypeMapping TypeName="dbCineNCapasaModel.PERSONA">
+        <MappingFragment StoreEntitySet="PERSONA">
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="edad" ColumnName="edad" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROL">
+      <EntityTypeMapping TypeName="dbCineNCapasaModel.ROL">
+        <MappingFragment StoreEntitySet="ROL">
+          <ScalarProperty Name="idrol" ColumnName="idrol" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

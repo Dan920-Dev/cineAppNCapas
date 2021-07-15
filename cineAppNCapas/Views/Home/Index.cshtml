@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="jumbotron"> 
+    <!--- Contenedor imagen, Saludo y descripcion---> 
+    <div class="caja1">
+        <h1>Bienvenido</h1>
+        <p class="lead">Sistema de mantenimiento de acceso premier.</p>
+    </div>
+
+    <div class="caja2">
+        <img class="palomita" src="https://images.vexels.com/media/users/3/200470/isolated/preview/912b70585a5a9eed838dba9622e42404-color-de-palomitas-de-carnaval-by-vexels.png" />
+    </div>
+
+</div>
+
+<!--- Contenedores para enlaces con divs que puedan ser centrados en un solo contenedor--->
+    <div class="row">
+        <div class="contenedorpr">
+            <div class="contenedorpr2">
+                <div class="contenedor1">
+                    <div class="col-md-4">
+                        <h2>@Html.ActionLink("Personas", "Index", "PERSONAs")</h2>
+                        <p>
+                            Mantenimiento para las Personas que estan ingresadas en la Base de datos, puede saber informacion personal, ademas puede agregar, eliminar o editar una persona.
+                        </p>
+
+                    </div>
+                    <div class="col-md-4">
+                        <h2>@Html.ActionLink("Roles", "Index", "ROLs")</h2>
+                        <p>
+                            Mantenimiento para  los roles que estan ingresadas en la Base de datos, puede agregar, eliminar o editar un rol.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contenedorpr2">
+                <div class="contenedor1">
+                    <div class="col-md-4">
+                        <h2>@Html.ActionLink("Peliculas", "Index", "PELICULAs")</h2>
+                        <p>
+                            Mantenimiento de  Peliculas que estan ingresadas en la Base de datos, puede saber su informacion, ademas puede agregar, eliminar o editar una pelicula.
+                        </p>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h2>@Html.ActionLink("Acceso Premier", "Index", "ACCESOPREMIERs")</h2>
+                        <p>
+                            Mantenimiento para las personas que tienen acceso premier que estan ingresadas en la Base de datos, puede saber su informacion, agregar, eliminar o editar una persona.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
